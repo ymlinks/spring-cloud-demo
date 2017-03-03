@@ -1,0 +1,87 @@
+group 'com.shine'
+version '1.0.0'
+
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.1.RELEASE'
+        grpcVersion = '1.1.2'
+    }
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/public/"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+
+sourceCompatibility = 1.8
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/public/"
+    }
+    jcenter()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+        exclude module: "hibernate-validator"
+        exclude module: "jackson-databind"
+    }
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'com.alibaba:fastjson:1.2.21'
+    compile('mysql:mysql-connector-java:6.0.5')
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.1.1"
+    compile "io.grpc:grpc-netty:$grpcVersion"
+    compile "io.grpc:grpc-protobuf:$grpcVersion"
+    compile "io.grpc:grpc-stub:$grpcVersion"
+
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
+}
+
+apply plugin: 'com.google.protobuf'
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0'
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.1.2"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {
+                option 'enable_deprecated=false'
+            }
+        }
+    }
+}
+
+// Inform IntelliJ projects about the generated code.
+apply plugin: 'idea'
+
+idea {
+    module {
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java");
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/grpc");
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
