@@ -1,17 +1,16 @@
 package com.boka.cloud.controller;
 
 import com.boka.cloud.annotation.Auth;
-import com.boka.cloud.model.Record;
+import com.boka.cloud.dto.ResultTO;
 import com.boka.cloud.service.RecordService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
-public class UserController {
+public class UserController extends BaseController {
 
     @Resource
     private RecordService recordService;
@@ -24,10 +23,9 @@ public class UserController {
 
 
     @RequestMapping("/records")
-    @ResponseBody
     @Auth(required = true)
-    List<Record> records() {
-        return recordService.getAll();
+    ResultTO records() {
+        return sendResult(recordService.getAll());
     }
 
 }
