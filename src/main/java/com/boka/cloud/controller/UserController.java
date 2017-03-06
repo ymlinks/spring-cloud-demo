@@ -34,7 +34,7 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/users")
-    ResultTO users(@RequestParam String keyword) {
+    ResultTO users(@RequestParam(required = false) String keyword) {
         if(Assert.isNotNull(keyword)) {
             return sendResult(userService.getByKeyword(keyword));
         }
