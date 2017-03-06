@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:slim
+FROM frolvlad/alpine-oraclejdk8:latest
 VOLUME /tmp
 ADD ./build/libs/spring-cloud-demo-1.0.0.jar app.jar
 RUN sh -c 'touch /app.jar'
