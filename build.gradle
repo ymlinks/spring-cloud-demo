@@ -1,10 +1,11 @@
-group 'com.shine'
+group 'com.boka'
 version '1.0.0'
 
 
 buildscript {
     ext {
         springBootVersion = '1.5.1.RELEASE'
+        mybatisVersion= '1.2.0'
         grpcVersion = '1.1.2'
     }
     repositories {
@@ -22,7 +23,6 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 
-
 sourceCompatibility = 1.8
 repositories {
     maven {
@@ -37,15 +37,16 @@ dependencies {
         exclude module: "jackson-databind"
     }
     compile 'javax.servlet:javax.servlet-api:3.1.0'
-    compile 'com.alibaba:fastjson:1.2.21'
-    compile('mysql:mysql-connector-java:6.0.5')
+    compile 'com.alibaba:fastjson:1.2.24'
+    compile('mysql:mysql-connector-java:5.1.41')
     compile("org.springframework.boot:spring-boot-starter-data-redis")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile "org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.1.1"
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
+    compile("com.alibaba:druid:1.0.28")
     compile "io.grpc:grpc-netty:$grpcVersion"
     compile "io.grpc:grpc-protobuf:$grpcVersion"
     compile "io.grpc:grpc-stub:$grpcVersion"
-
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -77,8 +78,8 @@ apply plugin: 'idea'
 
 idea {
     module {
-        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java");
-        sourceDirs += file("${projectDir}/build/generated/source/proto/main/grpc");
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java")
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/grpc")
     }
 }
 
