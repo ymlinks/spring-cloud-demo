@@ -4,9 +4,9 @@ version '1.0.0'
 
 buildscript {
     ext {
-        springBootVersion = '1.5.1.RELEASE'
-        mybatisVersion= '1.2.0'
-        grpcVersion = '1.1.2'
+        springBootVersion = '1.5.9.RELEASE'
+        mybatisVersion = '1.2.0'
+        grpcVersion = '1.8.0'
     }
     repositories {
         maven {
@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.3"
     }
 }
 
@@ -83,6 +83,19 @@ idea {
     }
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src/main/proto'
+        }
+    }
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.3.1"
 }
