@@ -4,9 +4,11 @@ spring-cloud-demo 为学习代码，里面存在一些瑕疵还请谅解
 
 
 
-##主要实现功能点
+# 主要实现功能点
 
-### Mybatis集成
-### Redis集成
-### Mongodb集成
-### GRpc简单通信
+## Mybatis集成
+## Redis集成
+## Mongodb集成
+## GRpc简单通信
+## 统一异常处理
+## 统一认证处理
