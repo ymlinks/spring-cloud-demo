@@ -4,9 +4,9 @@ version '1.0.0'
 
 buildscript {
     ext {
-        springBootVersion = '1.5.9.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
         mybatisVersion = '1.2.0'
-        grpcVersion = '1.8.0'
+        grpcVersion = '1.12.0'
     }
     repositories {
         maven {
@@ -33,20 +33,27 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
-        exclude module: "hibernate-validator"
         exclude module: "jackson-databind"
+        exclude module: "spring-boot-starter-tomcat"
     }
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-cache:$springBootVersion")
     compile 'com.alibaba:fastjson:1.2.24'
-    compile('mysql:mysql-connector-java:5.1.41')
-    compile("org.springframework.boot:spring-boot-starter-data-redis")
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile('mysql:mysql-connector-java:5.1.46')
+    compile("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
     compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
     compile("com.alibaba:druid:1.0.28")
+    compile 'log4j:log4j:1.2.17'
     compile "io.grpc:grpc-netty:$grpcVersion"
     compile "io.grpc:grpc-protobuf:$grpcVersion"
     compile "io.grpc:grpc-stub:$grpcVersion"
+
+    compile "com.fasterxml.jackson.core:jackson-annotations:2.9.5"
+    compile "com.fasterxml.jackson.core:jackson-core:2.9.5"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.5"
+    compile "org.apache.commons:commons-pool2:2.5.0"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -57,11 +64,11 @@ apply plugin: 'com.google.protobuf'
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.1.0'
+        artifact = 'com.google.protobuf:protoc:3.5.1-1'
     }
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.1.2"
+            artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion"
         }
     }
     generateProtoTasks {
@@ -97,5 +104,5 @@ tasks.withType(JavaCompile) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "4.3.1"
+    gradleVersion = "4.7"
 }
