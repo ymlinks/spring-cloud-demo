@@ -1,4 +1,4 @@
-group 'com.boka'
+group 'com.ymlinks'
 version '1.0.0'
 
 
@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.3"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
     }
 }
 
@@ -54,6 +54,11 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-core:2.9.5"
     compile "com.fasterxml.jackson.core:jackson-databind:2.9.5"
     compile "org.apache.commons:commons-pool2:2.5.0"
+
+    compile "io.springfox:springfox-swagger2:2.8.0"
+    compile "io.springfox:springfox-swagger-ui:2.8.0"
+
+    compileOnly "org.projectlombok:lombok:1.16.20"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
     testCompile group: 'junit', name: 'junit', version: '4.12'
