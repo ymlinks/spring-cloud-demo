@@ -30,7 +30,7 @@ public class Swagger2Config {
                 .description("The APIs here demonstrate creating a service built with Spring Boot")
                 .license("MIT")
                 .licenseUrl("http://opensource.org/licenses/MIT")
-                .contact(new Contact("ShFu", "www.ymlinks.com", "zhaohuifu@ymlinks.com"))
+                .contact(new Contact("ShFu", "www.ymlinks.com", "fuzhaohui200@gmail.com"))
                 .version("1.0")
                 .build();
 
