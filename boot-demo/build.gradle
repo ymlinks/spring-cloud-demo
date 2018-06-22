@@ -1,0 +1,32 @@
+apply plugin: 'org.springframework.boot'
+
+group 'com.ymlinks'
+version '1.0.0'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+        exclude module: "jackson-databind"
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-cache:$springBootVersion")
+    compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
+    compile 'com.alibaba:fastjson:1.2.24'
+    compile('mysql:mysql-connector-java:5.1.46')
+    compile("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
+    compile("com.alibaba:druid:1.0.28")
+    compile "io.grpc:grpc-netty:$grpcVersion"
+    compile "io.grpc:grpc-protobuf:$grpcVersion"
+    compile "io.grpc:grpc-stub:$grpcVersion"
+
+    compile "com.fasterxml.jackson.core:jackson-annotations:2.9.5"
+    compile "com.fasterxml.jackson.core:jackson-core:2.9.5"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.5"
+    compile "org.apache.commons:commons-pool2:2.5.0"
+
+    compile "io.springfox:springfox-swagger2:2.8.0"
+    compile "io.springfox:springfox-swagger-ui:2.8.0"
+}

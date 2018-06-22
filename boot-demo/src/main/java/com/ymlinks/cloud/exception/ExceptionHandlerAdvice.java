@@ -2,7 +2,7 @@ package com.ymlinks.cloud.exception;
 
 import com.alibaba.fastjson.JSONException;
 import com.ymlinks.cloud.dto.ResultTO;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * Created by Admin on 2016/1/14 0014.
  */
+@Slf4j
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 
-    private static final Logger logger = Logger.getLogger(ExceptionHandlerAdvice.class);
 
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.OK)
@@ -28,7 +28,7 @@ public class ExceptionHandlerAdvice {
         result.setCode(500);
         e.printStackTrace();
         result.setMsg("服务器错误");
-        logger.error(e.getMessage());
+        log.error(e.getMessage());
         return result;
     }
 

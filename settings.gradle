@@ -1,2 +1,4 @@
 rootProject.name = 'spring-cloud-demo'
+include 'config-server'
+include 'boot-demo'
 

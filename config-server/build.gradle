@@ -1,0 +1,15 @@
+apply plugin: 'org.springframework.boot'
+
+bootJar {
+    launchScript()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT"
+    }
+}
+
+dependencies {
+    compile("org.springframework.cloud:spring-cloud-config-server:$springCloudVersion")
+}
