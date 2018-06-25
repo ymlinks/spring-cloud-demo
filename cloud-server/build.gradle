@@ -12,6 +12,6 @@ dependencyManagement {
 
 dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:$springCloudVersion")
-    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+//    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
 }
 
