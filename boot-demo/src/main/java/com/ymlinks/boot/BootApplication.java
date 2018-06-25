@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableCaching
 @ComponentScan("com.ymlinks")
-@MapperScan("com.ymlinks.cloud.mapper")
+@MapperScan("com.ymlinks.boot.mapper")
 @EnableMongoRepositories("com.ymlinks.*.repository")
 public class BootApplication {
     public static void main(String[] args) {
