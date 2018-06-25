@@ -1,0 +1,17 @@
+apply plugin: 'org.springframework.boot'
+
+bootJar {
+    launchScript()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT"
+    }
+}
+
+dependencies {
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:$springCloudVersion")
+    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+}
+

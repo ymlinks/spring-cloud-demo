@@ -11,6 +11,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-cache:$springBootVersion")
     compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
+    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
     compile 'com.alibaba:fastjson:1.2.24'
     compile('mysql:mysql-connector-java:5.1.46')
     compile("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
