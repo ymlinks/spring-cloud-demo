@@ -8,6 +8,7 @@ buildscript {
         springCloudVersion = '2.0.0.RELEASE'
         mybatisVersion = '1.2.0'
         grpcVersion = '1.12.0'
+        hadoopVersion = '2.5.0.RELEASE'
     }
     repositories {
         maven {
