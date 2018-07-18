@@ -48,7 +48,7 @@ apply plugin: 'com.google.protobuf'
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.6.0'
+        artifact = "com.google.protobuf:protoc:$grpc2JavaVersion"
     }
     plugins {
         grpc {

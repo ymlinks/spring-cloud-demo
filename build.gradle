@@ -7,18 +7,19 @@ buildscript {
         springBootVersion = '2.0.3.RELEASE'
         springCloudVersion = '2.0.0.RELEASE'
         mybatisVersion = '1.2.0'
-        grpcVersion = '1.12.0'
+        grpcVersion = '1.13.2'
+        grpc2JavaVersion = "3.6.0"
         hadoopVersion = '2.5.0.RELEASE'
     }
     repositories {
         maven {
-            url "http://maven.aliyun.com/nexus/content/repositories/public/"
+            url "http://maven.aliyun.com/nexus/content/repositories/gradle-plugin"
         }
         jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.6"
         classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2'
     }
 }
@@ -56,5 +57,5 @@ tasks.withType(JavaCompile) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "4.8"
+    gradleVersion = "4.9"
 }
