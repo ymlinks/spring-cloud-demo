@@ -32,7 +32,10 @@ subprojects {
     sourceCompatibility = 1.8
     repositories {
         maven {
-            url "http://maven.aliyun.com/nexus/content/repositories/public/"
+            url "http://maven.aliyun.com/nexus/content/repositories/public"
+        }
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/jcenter"
         }
         jcenter()
         mavenCentral()
