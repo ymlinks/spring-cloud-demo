@@ -29,20 +29,6 @@ dependencies {
 
     compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
     compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
-
-    compile("org.springframework.data:spring-data-hadoop-boot:$hadoopVersion")
-    compile("org.springframework.data:spring-data-hadoop-hbase:$hadoopVersion")
-    compile("org.springframework.data:spring-data-hadoop-pig:$hadoopVersion")
-    compile("org.springframework.data:spring-data-hadoop-spark:$hadoopVersion") {
-        exclude module: "log4j"
-        exclude module: "slf4j-log4j12"
-    }
-    compile("org.springframework.data:spring-data-hadoop-hive:$hadoopVersion")
-    compile("org.springframework.data:spring-data-hadoop-store:$hadoopVersion")
-
-    compile 'org.apache.spark:spark-core_2.11:2.3.1'
-    compile 'org.apache.spark:spark-sql_2.11:2.3.1'
-    compile 'org.apache.spark:spark-mllib_2.11:2.3.1'
 }
 
 apply plugin: 'com.google.protobuf'
