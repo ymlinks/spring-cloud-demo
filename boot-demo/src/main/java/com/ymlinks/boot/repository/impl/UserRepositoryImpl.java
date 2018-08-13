@@ -21,7 +21,7 @@ public class UserRepositoryImpl implements UserRepositoryAdvance {
     @Override
     public List<User> findByKeyword(String keyword, int page) {
         Query query = new Query(Criteria.where("name").regex(keyword, "m").and("activatedStatus").gte(1));
-        query.with(new PageRequest(page - 1, 10));
+        query.with(PageRequest.of(page - 1, 10));
         return ops.find(query, User.class);
     }
 

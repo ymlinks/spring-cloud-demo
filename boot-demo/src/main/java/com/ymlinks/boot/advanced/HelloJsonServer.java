@@ -120,13 +120,7 @@ public class HelloJsonServer {
                     .builder(GreeterGrpc.getServiceDescriptor().getName())
                     .addMethod(HelloJsonClient.HelloJsonStub.METHOD_SAY_HELLO,
                             asyncUnaryCall(
-                                    new UnaryMethod<HelloRequest, HelloReply>() {
-                                        @Override
-                                        public void invoke(
-                                                HelloRequest request, StreamObserver<HelloReply> responseObserver) {
-                                            sayHello(request, responseObserver);
-                                        }
-                                    }))
+                                    (request, responseObserver) -> sayHello(request, responseObserver)))
                     .build();
         }
     }

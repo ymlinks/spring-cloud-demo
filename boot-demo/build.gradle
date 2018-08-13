@@ -20,6 +20,7 @@ dependencies {
     compile "io.grpc:grpc-netty:$grpcVersion"
     compile "io.grpc:grpc-protobuf:$grpcVersion"
     compile "io.grpc:grpc-stub:$grpcVersion"
+    compile "com.google.protobuf:protobuf-java-util:$grpc2JavaVersion"
 
     compile "org.apache.commons:commons-pool2:2.5.0"
 

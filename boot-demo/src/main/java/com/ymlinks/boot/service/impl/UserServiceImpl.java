@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        Pageable page = new PageRequest(0, 10);
+        Pageable page = PageRequest.of(0, 10);
         return userRepository.findAll(page).getContent();
     }
 
