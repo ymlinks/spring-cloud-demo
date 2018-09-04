@@ -1,7 +1,6 @@
 group 'com.ymlinks'
 version '1.0.0'
 
-
 buildscript {
     ext {
         springBootVersion = '2.0.3.RELEASE'

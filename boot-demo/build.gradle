@@ -1,8 +1,5 @@
 apply plugin: 'org.springframework.boot'
 
-group 'com.ymlinks'
-version '1.0.0'
-
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
         exclude module: "spring-boot-starter-tomcat"
