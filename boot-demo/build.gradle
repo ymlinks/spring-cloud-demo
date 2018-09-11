@@ -2,16 +2,16 @@ apply plugin: 'org.springframework.boot'
 version '1.0.0'
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+    compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-cache:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile("org.springframework.boot:spring-boot-starter-cache")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile 'com.alibaba:fastjson:1.2.24'
     compile('mysql:mysql-connector-java:5.1.46')
-    compile("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
     compile("com.alibaba:druid:1.0.28")
@@ -22,11 +22,11 @@ dependencies {
 
     compile "org.apache.commons:commons-pool2:2.5.0"
 
-    compile "io.springfox:springfox-swagger2:2.8.0"
-    compile "io.springfox:springfox-swagger-ui:2.8.0"
+    compile "io.springfox:springfox-swagger2:2.9.0"
+    compile "io.springfox:springfox-swagger-ui:2.9.0"
 
-    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
-    compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    compile("org.springframework.cloud:spring-cloud-starter-config")
 
     compile 'org.apache.flink:flink-java:1.6.0'
     testCompile 'org.apache.flink:flink-test-utils_2.11:1.6.0'

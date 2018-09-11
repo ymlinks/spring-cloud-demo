@@ -2,12 +2,11 @@ apply plugin: 'org.springframework.boot'
 version '1.0.0'
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+    compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-cache:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
-    
-    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile("org.springframework.boot:spring-boot-starter-cache")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 }
