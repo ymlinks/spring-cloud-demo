@@ -41,7 +41,7 @@
     <logger name="pedestal" level="ALL"/>
     <logger name="hammock-cafe" level="ALL"/>
     <logger name="user" level="ALL"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="com.netflix" level="WARN"/>
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="com.netflix" level="DEBUG"/>
     <logger name="springfox" level="ERROR"/>
 </configuration>
