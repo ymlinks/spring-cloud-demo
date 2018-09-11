@@ -27,6 +27,9 @@ dependencies {
 
     compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
     compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
+
+    compile 'org.apache.flink:flink-java:1.6.0'
+    testCompile 'org.apache.flink:flink-test-utils_2.11:1.6.0'
 }
 
 apply plugin: 'com.google.protobuf'
