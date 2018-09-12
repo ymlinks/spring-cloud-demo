@@ -4,4 +4,5 @@ include 'boot-demo'
 include 'cloud-server'
 include 'gateway-server'
 include 'cloud-demo'
+include 'consul-demo'
 

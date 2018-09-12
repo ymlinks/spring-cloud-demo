@@ -1,4 +1,3 @@
-apply plugin: 'org.springframework.boot'
 version '1.0.0'
 
 dependencies {
