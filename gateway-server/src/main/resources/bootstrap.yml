@@ -1,0 +1,30 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+      - id: cloud-demo
+        uri: lb://cloud-demo
+        predicates:
+        - Path=/demo/**
+        filters:
+        - SwaggerHeaderFilter
+        - StripPrefix=1
+      - id: consul-demo
+        uri: lb://consul-demo
+        predicates:
+        - Path=/consul/**
+        filters:
+        - SwaggerHeaderFilter
+        - StripPrefix=1
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        enabled: true
