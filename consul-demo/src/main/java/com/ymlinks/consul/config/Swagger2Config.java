@@ -1,4 +1,4 @@
-package com.ymlinks.boot.config;
+package com.ymlinks.consul.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
