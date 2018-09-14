@@ -1,5 +1,6 @@
-package com.ymlinks.consul.config;
+package com.ymlinks.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,8 @@ import java.util.List;
 })
 public class Swagger2Config {
 
+    @Value("${app.name}")
+    private String appName;
 
     @Bean
     public Docket createRestApi() {
@@ -36,7 +39,7 @@ public class Swagger2Config {
                 .globalOperationParameters(params)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ymlinks.boot.controller"))
+                .apis(RequestHandlerSelectors.basePackage(String.format("com.ymlinks.%s.controller", appName)))
                 .paths(PathSelectors.any())
                 .build();
     }

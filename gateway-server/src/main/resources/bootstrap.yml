@@ -12,7 +12,7 @@ spring:
       - id: cloud-demo
         uri: lb://cloud-demo
         predicates:
-        - Path=/demo/**
+        - Path=/cloud/**
       - id: consul-demo
         uri: lb://consul-demo
         predicates:

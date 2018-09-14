@@ -1,0 +1,26 @@
+version '1.0.0'
+jar {
+    enabled = true
+}
+bootJar {
+    enabled = false
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile("org.springframework.boot:spring-boot-starter-cache")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+    compile("org.springframework.cloud:spring-cloud-starter-consul-config")
+    compile("com.alibaba:fastjson:1.2.24")
+    compile("io.springfox:springfox-swagger2:2.9.2") {
+        exclude module: "swagger-annotations"
+        exclude module: "swagger-models"
+    }
+    compile("io.springfox:springfox-swagger-ui:2.9.2")
+    compile("io.swagger:swagger-annotations:1.5.21")
+    compile("io.swagger:swagger-models:1.5.21")
+}
