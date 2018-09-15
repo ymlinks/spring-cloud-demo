@@ -16,7 +16,7 @@
         </rollingPolicy>
 
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
+            <level>INFO</level>
         </filter>
         <prudent>true</prudent>
     </appender>
@@ -28,11 +28,11 @@
             <charset>UTF-8</charset>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
+            <level>INFO</level>
         </filter>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
@@ -41,7 +41,7 @@
     <logger name="pedestal" level="ALL"/>
     <logger name="hammock-cafe" level="ALL"/>
     <logger name="user" level="ALL"/>
-    <logger name="org.springframework" level="DEBUG"/>
-    <logger name="com.netflix" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.netflix" level="INFO"/>
     <logger name="springfox" level="ERROR"/>
 </configuration>

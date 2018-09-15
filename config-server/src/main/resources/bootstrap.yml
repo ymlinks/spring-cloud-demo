@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/fuzhaohui200/spring-cloud-demo.git
+          search-paths: config
+  #          uri: file:D:/IdeaProjects/spring-cloud-demo
+  # 安全认证
+  security:
+    basic:
+      enabled: false
+  user:
+    name: test
+    password: test
