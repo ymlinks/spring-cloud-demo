@@ -27,4 +27,7 @@ dependencies {
 
     // 热部署
     compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.cloud:spring-cloud-starter-sleuth")
+    compile("org.springframework.cloud:spring-cloud-starter-zipkin")
+    compile("net.logstash.logback:logstash-logback-encoder:5.2")
 }
