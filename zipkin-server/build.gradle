@@ -1,0 +1,16 @@
+version '1.0.0'
+
+bootJar {
+    enabled = true
+}
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.cloud:spring-cloud-starter"
+    compile "org.springframework.cloud:spring-cloud-starter-consul-discovery"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
+    compile("io.zipkin.java:zipkin-server:2.11.5") {
+        exclude module: "spring-boot-starter-log4j2"
+    }
+    compile 'io.zipkin.java:zipkin-autoconfigure-ui:2.11.5'
+    compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+}

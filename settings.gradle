@@ -6,4 +6,5 @@ include 'gateway-server'
 include 'cloud-demo'
 include 'consul-demo'
 include 'boot-common'
+include 'zipkin-server'
 

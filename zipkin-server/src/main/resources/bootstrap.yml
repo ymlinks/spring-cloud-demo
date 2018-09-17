@@ -1,0 +1,14 @@
+server:
+  port: 17601
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ym-zipkin
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

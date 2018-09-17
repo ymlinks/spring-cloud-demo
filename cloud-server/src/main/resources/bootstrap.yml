@@ -3,7 +3,7 @@ server:
   port: 8761
 spring:
   application:
-    name: eureka-server
+    name: $pom.artifactId@
   profiles:
     active: dev
 #\u670D\u52A1\u6CE8\u518C\u4E2D\u5FC3\u5B9E\u4F8B\u7684\u4E3B\u673A\u540D
