@@ -10,10 +10,11 @@ spring:
     enabled: false
   datasource:
     schema: classpath:/mysql.sql
-    url: jdbc:mysql://127.0.0.1:3306/zipkin?zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8
+    url: jdbc:mysql://127.0.0.1:3306/zipkin?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+
   sleuth:
     enabled: false
 zipkin:
