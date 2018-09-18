@@ -26,14 +26,4 @@ public class CloudApplication {
     public static void main(String[] args) {
         SpringApplication.run(CloudApplication.class, args);
     }
-
-    @Bean
-    public TransportClient transportClient() throws UnknownHostException {
-        return new PreBuiltXPackTransportClient(Settings.builder()
-                .put("cluster.name", "docker-cluster")
-                .put("client.transport.ignore_cluster_name", false)
-                .put("xpack.security.user", "elastic:123456")
-                .build())
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.141.160"), 9300));
-    }
 }
