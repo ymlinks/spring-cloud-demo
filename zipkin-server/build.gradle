@@ -17,7 +17,7 @@ dependencies {
     // 默认是放在内存里 这里配置持久化到mysql
     compile("io.zipkin.java:zipkin-autoconfigure-storage-mysql:2.11.5")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
-    compile("mysql:mysql-connector-java:6.0.6")
+    compile('mysql:mysql-connector-java:5.1.46')
     compile("net.logstash.logback:logstash-logback-encoder:5.2")
 
 }
