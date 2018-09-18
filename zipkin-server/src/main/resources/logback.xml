@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
+    <springProperty scope="context" name="logPath" source="log.path" defaultValue="logs"/>
+    <springProperty scope="context" name="appName" source="app.name" defaultValue="user"/>
+    <springProperty scope="context" name="destination" source="logstash.destination"
+                    defaultValue="192.168.141.160:5000"/>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <pattern>
@@ -9,7 +13,7 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/home/ym-zipkin-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logPath}/${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>64 MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -33,7 +37,7 @@
     </appender>
 
     <appender name="LOG_STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>192.168.141.160:5000</destination>
+        <destination>${destination}</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp>
@@ -69,6 +73,8 @@
     <logger name="hammock-cafe" level="ALL"/>
     <logger name="user" level="ALL"/>
     <logger name="org.springframework" level="WARN"/>
-    <logger name="com.netflix" level="WARN"/>
+    <logger name="io.grpc" level="INFO"/>
+    <logger name="LogAspect" level="INFO"/>
+    <logger name="GateGrpcClient" level="INFO"/>
     <logger name="springfox" level="ERROR"/>
 </configuration>

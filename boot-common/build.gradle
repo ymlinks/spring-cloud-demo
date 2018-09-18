@@ -15,7 +15,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.cloud:spring-cloud-starter-consul-discovery")
     compile("org.springframework.cloud:spring-cloud-starter-consul-config")
-    compile("org.springframework.cloud:spring-cloud-starter-bus-amqp")
+//    compile("org.springframework.cloud:spring-cloud-starter-bus-amqp")
     compile("com.alibaba:fastjson:1.2.24")
     compile("io.springfox:springfox-swagger2:2.9.2") {
         exclude module: "swagger-annotations"
