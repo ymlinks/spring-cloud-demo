@@ -23,36 +23,20 @@ public class OssService {
     private String accessKeySecret;
     @Value("${oss.access.role.arn}")
     private String roleArn;
-    private static final String REGION_CN_HANGZHOU = "cn-shanghai";
+    @Value("${oss.policy}")
+    private String policy;
+    private static final String REGION_CN_SHANGHAI = "cn-shanghai";
     private static final String STS_API_VERSION = "2015-04-01";
 
 
     public Map<String, String> getToken() {
 
         long durationSeconds = 900; // 设置Token有效期 默认是3600秒
-        String policy = "{\n" +
-                "  \"Version\": \"1\",\n" +
-                "  \"Statement\": [\n" +
-                "    {\n" +
-                "      \"Effect\": \"Allow\",\n" +
-                "      \"Action\": [\n" +
-                "        \"oss:DeleteObject\",\n" +
-                "        \"oss:ListParts\",\n" +
-                "        \"oss:AbortMultipartUpload\",\n" +
-                "        \"oss:PutObject\"\n" +
-                "      ],\n" +
-                "      \"Resource\": [\n" +
-                "        \"acs:oss:*:*:ram-test-app\",\n" +
-                "        \"acs:oss:*:*:ram-test-app/*\"\n" +
-                "      ]\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
         String roleSessionName = "alice-001";
 
         // 此处必须为 HTTPS
         ProtocolType protocolType = ProtocolType.HTTPS;
-        IClientProfile profile = DefaultProfile.getProfile(REGION_CN_HANGZHOU, accessKeyId, accessKeySecret);
+        IClientProfile profile = DefaultProfile.getProfile(REGION_CN_SHANGHAI, accessKeyId, accessKeySecret);
         DefaultAcsClient client = new DefaultAcsClient(profile);
 
         // 创建一个 AssumeRoleRequest 并设置请求参数
