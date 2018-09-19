@@ -11,23 +11,43 @@ import com.aliyuncs.profile.IClientProfile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Service
 public class OssService {
 
-    @Value("oss.access.key.id")
+    @Value("${oss.access.key.id}")
     private String accessKeyId;
-    @Value("oss.access.key.secret")
+    @Value("${oss.access.key.secret}")
     private String accessKeySecret;
-    @Value("oss.access.role.arn")
+    @Value("${oss.access.role.arn}")
     private String roleArn;
     private static final String REGION_CN_HANGZHOU = "cn-shanghai";
     private static final String STS_API_VERSION = "2015-04-01";
 
 
-    public AssumeRoleResponse getToken() {
+    public Map<String, String> getToken() {
 
         long durationSeconds = 900; // 设置Token有效期 默认是3600秒
-        String policy = "{\"Statement\": [{\"Action\": [\"oss:GetObject\", \"oss:PutObject\"], \"Effect\": \"Allow\", \"Resource\": [\"acs:oss:*:*:$BUCKET_NAME/*\", \"acs:oss:*:*:$BUCKET_NAME\"]}],\"Version\": \"1\"}\n";
+        String policy = "{\n" +
+                "  \"Version\": \"1\",\n" +
+                "  \"Statement\": [\n" +
+                "    {\n" +
+                "      \"Effect\": \"Allow\",\n" +
+                "      \"Action\": [\n" +
+                "        \"oss:DeleteObject\",\n" +
+                "        \"oss:ListParts\",\n" +
+                "        \"oss:AbortMultipartUpload\",\n" +
+                "        \"oss:PutObject\"\n" +
+                "      ],\n" +
+                "      \"Resource\": [\n" +
+                "        \"acs:oss:*:*:ram-test-app\",\n" +
+                "        \"acs:oss:*:*:ram-test-app/*\"\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
         String roleSessionName = "alice-001";
 
         // 此处必须为 HTTPS
@@ -47,13 +67,14 @@ public class OssService {
 
         try {
             AssumeRoleResponse response = client.getAcsResponse(request);
-            return response;
-//            Map<String, String> respMap = new LinkedHashMap<>();
-//            respMap.put("AccessKeyId", response.getCredentials().getAccessKeyId());
-//            respMap.put("AccessKeySecret", response.getCredentials().getAccessKeySecret());
-//            respMap.put("SecurityToken", response.getCredentials().getSecurityToken());
-//            respMap.put("Expiration", response.getCredentials().getExpiration());
+            Map<String, String> respMap = new LinkedHashMap<>();
+            respMap.put("AccessKeyId", response.getCredentials().getAccessKeyId());
+            respMap.put("AccessKeySecret", response.getCredentials().getAccessKeySecret());
+            respMap.put("SecurityToken", response.getCredentials().getSecurityToken());
+            respMap.put("Expiration", response.getCredentials().getExpiration());
+            return respMap;
         } catch (ClientException e) {
+            e.printStackTrace();
         }
         return null;
     }
