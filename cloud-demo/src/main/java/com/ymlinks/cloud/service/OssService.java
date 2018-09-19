@@ -11,9 +11,6 @@ import com.aliyuncs.profile.IClientProfile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 @Service
 public class OssService {
 
@@ -27,7 +24,7 @@ public class OssService {
     private static final String STS_API_VERSION = "2015-04-01";
 
 
-    public void getToken() {
+    public AssumeRoleResponse getToken() {
 
         long durationSeconds = 900; // 设置Token有效期 默认是3600秒
         String policy = "{\"Statement\": [{\"Action\": [\"oss:GetObject\", \"oss:PutObject\"], \"Effect\": \"Allow\", \"Resource\": [\"acs:oss:*:*:$BUCKET_NAME/*\", \"acs:oss:*:*:$BUCKET_NAME\"]}],\"Version\": \"1\"}\n";
@@ -50,13 +47,14 @@ public class OssService {
 
         try {
             AssumeRoleResponse response = client.getAcsResponse(request);
-            Map<String, String> respMap = new LinkedHashMap<>();
-            respMap.put("AccessKeyId", response.getCredentials().getAccessKeyId());
-            respMap.put("AccessKeySecret", response.getCredentials().getAccessKeySecret());
-            respMap.put("SecurityToken", response.getCredentials().getSecurityToken());
-            respMap.put("Expiration", response.getCredentials().getExpiration());
+            return response;
+//            Map<String, String> respMap = new LinkedHashMap<>();
+//            respMap.put("AccessKeyId", response.getCredentials().getAccessKeyId());
+//            respMap.put("AccessKeySecret", response.getCredentials().getAccessKeySecret());
+//            respMap.put("SecurityToken", response.getCredentials().getSecurityToken());
+//            respMap.put("Expiration", response.getCredentials().getExpiration());
         } catch (ClientException e) {
         }
-
+        return null;
     }
 }

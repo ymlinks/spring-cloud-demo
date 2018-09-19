@@ -1,4 +1,4 @@
-package com.ymlinks.boot.dto;
+package com.ymlinks.common.dto;
 
 import lombok.Data;
 
