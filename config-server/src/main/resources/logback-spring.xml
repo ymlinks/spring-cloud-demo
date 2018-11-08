@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <springProperty scope="context" name="logPath" source="log.path" defaultValue="logs"/>
     <springProperty scope="context" name="appName" source="app.name" defaultValue="user"/>
     <springProperty scope="context" name="destination" source="logstash.destination"

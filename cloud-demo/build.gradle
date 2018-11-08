@@ -5,9 +5,19 @@ bootJar {
 
 dependencies {
     compile project(":boot-common")
+    compile("com.alibaba:druid:1.1.9")
+    compile("mysql:mysql-connector-java:$mysqlConnectorVersion")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
+
     compile("org.springframework.boot:spring-boot-starter-data-elasticsearch") {
         exclude module: "transport"
     }
     compile("org.elasticsearch.client:x-pack-transport:5.6.1")
     compile("com.aliyun.oss:aliyun-sdk-oss:3.3.0")
+
+    //spring-cloud依赖
+    compile("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+//    compile("org.springframework.cloud:spring-cloud-starter-zipkin")
+    compile("net.logstash.logback:logstash-logback-encoder:5.2")
 }
