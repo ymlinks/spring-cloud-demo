@@ -7,9 +7,7 @@ bootJar {
 dependencies {
     compile("org.springframework.cloud:spring-cloud-config-server")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.cloud:spring-cloud-starter-consul-all")
     compile("org.springframework.boot:spring-boot-starter-security")
-    compile("org.springframework.retry:spring-retry")
-
-    compile("net.logstash.logback:logstash-logback-encoder:5.2")
+    compile("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
 }
