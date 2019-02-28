@@ -12,6 +12,7 @@ buildscript {
         grpcVersion = '1.15.0'
         grpc2JavaVersion = "3.6.1"
         hadoopVersion = '2.5.0.RELEASE'
+        lombokVersion = '1.18.4'
     }
     repositories {
         maven {
@@ -63,8 +64,10 @@ subprojects {
     }
 
     dependencies {
-        compileOnly "org.projectlombok:lombok:1.18.4"
-        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+        compileOnly "org.projectlombok:lombok:$lombokVersion"
+        annotationProcessor('org.springframework.boot:spring-boot-autoconfigure-processor')
+        annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
         testCompile "org.springframework.boot:spring-boot-starter-test"
         testCompile group: 'junit', name: 'junit', version: '4.12'
         testCompile "org.mockito:mockito-core:1.9.5"

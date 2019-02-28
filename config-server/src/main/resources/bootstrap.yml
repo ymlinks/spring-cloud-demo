@@ -13,9 +13,9 @@ spring:
       discovery:
         enabled: true
         service-id: ${spring.application.name}
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
 
     consul:
       host: 127.0.0.1
