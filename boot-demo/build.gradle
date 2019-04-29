@@ -8,12 +8,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-cache")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile 'com.alibaba:fastjson:1.2.24'
-    compile('mysql:mysql-connector-java:5.1.46')
-    compile("org.springframework.boot:spring-boot-starter-data-redis")
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
-    compile("com.alibaba:druid:1.0.28")
     compile "io.grpc:grpc-netty:$grpcVersion"
     compile "io.grpc:grpc-protobuf:$grpcVersion"
     compile "io.grpc:grpc-stub:$grpcVersion"
@@ -30,7 +24,7 @@ dependencies {
     compile("io.swagger:swagger-models:1.5.21")
 
     compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    compile("org.springframework.cloud:spring-cloud-starter-config")
+//    compile("org.springframework.cloud:spring-cloud-starter-config")
 
     compile 'org.apache.flink:flink-java:1.6.0'
     testCompile 'org.apache.flink:flink-test-utils_2.11:1.6.0'
