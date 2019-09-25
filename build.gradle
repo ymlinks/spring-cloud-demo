@@ -3,18 +3,26 @@ version '1.0.0'
 
 buildscript {
     ext {
-        springBootVersion = '2.0.5.RELEASE'
-        springCloudVersion = 'Finchley.SR1'
-        springGradleVersion = "1.0.6.RELEASE"
+        springBootAdminVersion = '2.1.4'
+        springCloudVersion = 'Greenwich.SR1'
+        springBootVersion = '2.1.4.RELEASE'
+        springGradleVersion = '1.0.7.RELEASE'
         mysqlConnectorVersion = "5.1.44"
-        mybatisVersion = "1.3.2"
-        grpcVersion = '1.15.0'
-        grpc2JavaVersion = "3.6.1"
+        mybatisVersion = "2.0.1"
+        grpcVersion = '1.20.0'
+        grpc2JavaVersion = "3.7.1"
         hadoopVersion = '2.5.0.RELEASE'
+        lombokVersion = '1.18.6'
     }
     repositories {
         maven {
-            url "https://maven.aliyun.com/repository/public"
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            url 'https://repo.spring.io/libs-release'
+        }
+        maven {
+            url 'https://plugins.gradle.org/m2/'
         }
         jcenter()
         mavenCentral()
@@ -22,8 +30,9 @@ buildscript {
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:$springGradleVersion"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.6"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.8"
         classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2'
+        classpath 'com.gradle:build-scan-plugin:2.2.1'
     }
 }
 
@@ -55,8 +64,10 @@ subprojects {
     }
 
     dependencies {
-        compileOnly "org.projectlombok:lombok:1.18.2"
-        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+        compileOnly "org.projectlombok:lombok:$lombokVersion"
+        annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         testCompile "org.springframework.boot:spring-boot-starter-test"
         testCompile group: 'junit', name: 'junit', version: '4.12'
         testCompile "org.mockito:mockito-core:1.9.5"
@@ -72,8 +83,4 @@ subprojects {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = "4.9"
 }

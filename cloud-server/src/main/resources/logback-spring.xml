@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <springProperty scope="context" name="logPath" source="log.path" defaultValue="logs"/>
-    <springProperty scope="context" name="appName" source="app.name" defaultValue="user"/>
-    <springProperty scope="context" name="destination" source="logstash.destination"
-                    defaultValue="192.168.141.160:5000"/>
+    <springProperty scope="context" name="APP_NAME" source="app.name" defaultValue="user"/>
+    <springProperty scope="context" name="LOG_PATH" source="logging.path" defaultValue="logs"/>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
         <encoder>
             <pattern>
                 [%-5level][%date{yyyy-MM-dd HH:mm:ss.SSS}] %logger{96} [%line] - %msg%n
             </pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
-
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logPath}/${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>64 MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
 
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-        </filter>
         <prudent>true</prudent>
     </appender>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -32,23 +32,10 @@
             </pattern>
             <charset>UTF-8</charset>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-        </filter>
     </appender>
 
     <root level="INFO">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
-
-    <!-- For loggers in the these namespaces, log at all levels. -->
-    <logger name="pedestal" level="ALL"/>
-    <logger name="hammock-cafe" level="ALL"/>
-    <logger name="user" level="ALL"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="io.grpc" level="INFO"/>
-    <logger name="LogAspect" level="INFO"/>
-    <logger name="GateGrpcClient" level="INFO"/>
-    <logger name="springfox" level="ERROR"/>
 </configuration>
