@@ -5,10 +5,10 @@ bootJar {
 
 dependencies {
     compile project(":boot-common")
-    compile("com.alibaba:druid:1.1.9")
-    compile("mysql:mysql-connector-java:$mysqlConnectorVersion")
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion")
+    compile "com.alibaba:druid-spring-boot-starter:$druidVersion"
+    compile "mysql:mysql-connector-java"
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion"
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:$mybatisVersion"
 
     compile("org.springframework.boot:spring-boot-starter-data-elasticsearch") {
         exclude module: "transport"

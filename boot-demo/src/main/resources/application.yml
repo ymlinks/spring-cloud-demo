@@ -1,0 +1,25 @@
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 1
+
+spring:
+  application:
+    name: boot-demo
+
+
+# 管理中心配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+logging:
+  path: logs
+  file: ${logging.path}/${spring.application.name}
+  pattern:
+    file: "[%-5level][%date{yyyy-MM-dd HH:mm:ss.SSS}] %logger{96} [%line] - %msg%n"
