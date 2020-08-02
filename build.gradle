@@ -4,14 +4,13 @@ version '1.0.0'
 buildscript {
     ext {
         springBootAdminVersion = '2.2.3'
-        springCloudVersion = 'Hoxton.SR6'
+        springCloudVersion = 'Hoxton.SR7'
         springBootVersion = '2.3.2.RELEASE'
         springGradleVersion = '1.0.9.RELEASE'
-        mysqlConnectorVersion = "5.1.44"
-        mybatisVersion = '2.1.2'
-        druidVersion = '1.1.22'
-        grpcVersion = '1.20.0'
-        grpc2JavaVersion = "3.7.1"
+        mybatisVersion = '2.1.3'
+        druidVersion = '1.1.23'
+        grpcVersion = '1.30.2'
+        grpc2JavaVersion = '3.12.4'
         hadoopVersion = '2.5.0.RELEASE'
         lombokVersion = '1.18.6'
     }
